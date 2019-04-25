@@ -43,7 +43,7 @@ class Body extends Component {
       <div className="container">
         <div className="photo-container">
           {
-            {/*Loading message displayed, if the pictures are fetched the message disapears dn the pictures are shown */}
+            /*Loading message displayed, if the pictures are fetched the message disapears dn the pictures are shown */
             (this.state.loading) ? <p>Loading...</p> : <Pictures data={this.state.photos} query={this.state.query} />
           }
         </div>
