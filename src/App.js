@@ -1,25 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import './index.css';
+
+import Header from './components/Header'
+import Search from './components/Search'
+import Body from './components/Body'
+import NotFound from './components/NotFound'
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div>
+        <Header />
+        <div className="container">
+          <Switch>
+            {/*Routes: Creating routes to the appropiate searchs, also sending query information via props*/}
+            <Route exact path="/" component={() => (<Search />)}></Route>
+            <Route path="/cats" component={() => (<Body query={"cats"} />)}></Route>
+            <Route path="/dogs" component={() => (<Body query={"dogs"} />)}></Route>
+            <Route path="/birds" component={() => (<Body query={"birds"} />)}></Route>
+            <Route component={NotFound} />
+          </Switch>
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
